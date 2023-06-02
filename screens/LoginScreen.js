@@ -13,7 +13,7 @@ const LoginScreen = () => {
       query.forEach((doc) => {        
         list.push({...doc.data(), id: doc.id});
       });
-      setMusicas(list)      
+      setMusicas(list)
     };
     loadMusics();
   }, []);
