@@ -2,24 +2,24 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import {
   apiKey,
-  authDomain,
-  databaseURL,
+  authDomain,  
   projectId,
   storageBucket,
   messagingSenderId,
-  appId
+  appId,
+  measurementId
 } from  '@env';
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://support.google.com/firebase/answer/7015592
 const firebaseConfig = {
   apiKey: apiKey,
-  authDomain: authDomain,
-  databaseURL: databaseURL,
+  authDomain: authDomain,  
   projectId: projectId,
   storageBucket: storageBucket,
   messagingSenderId: messagingSenderId,
-  appId: appId
+  appId: appId,
+  measurementId: measurementId
 };
 
 
