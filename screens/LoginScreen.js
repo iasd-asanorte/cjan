@@ -8,7 +8,7 @@ const LoginScreen = () => {
 
   useEffect(()=>{
     const loadMusics = async () => {
-      const query = await getDocs(collection(Database, "musicas"));
+      const query = await getDocs(collection(Database, "profile"));
       const list = []
       query.forEach((doc) => {        
         list.push({...doc.data(), id: doc.id});
@@ -25,7 +25,7 @@ const LoginScreen = () => {
           data={musicas}
           renderItem={(musica) => (
             <View style={styles.item}>
-              <Text style={styles.text}>{musica.item.titulo}</Text>
+              <Text style={styles.text}>{musica.item.name}</Text>
             </View>
           )}
           keyExtractor={musica => musica.id}        
