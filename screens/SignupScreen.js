@@ -10,12 +10,26 @@ import {
     Platform, 
 } from 'react-native'
 import { SimpleLineIcons } from "@expo/vector-icons";
+import { signUp } from "../services/UserService";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Logo from '../assets/logo.png'
 
 const SignupScreen = ({navigation}) => {
-    const [textLogin, setTextLogin] = useState('')
+    const [textName, setTextName] = useState('')
+    const [textEmail, setTextEmail] = useState('')
     const [textPassword, setTextPassword] = useState('')
+
+    const onPressSignup = (email, pass, name) => {
+        signUp(email, pass, name).then((user) => {
+            AsyncStorage.setItem("token", user.uid)
+            navigation.navigate('Start')  
+        }).catch((error) => {
+            console.log("Register failed:", error)                        
+        }) 
+    }
+
+
 
     return (
         <KeyboardAvoidingView behavior={Platform.OS === 'ios'? 'padding': 'height'}>
@@ -23,17 +37,17 @@ const SignupScreen = ({navigation}) => {
                 <Image source={Logo} style={styles.logo} />
                 <Text style={styles.title}>Registro</Text>
                 <TextInput 
-                    value={textLogin}
+                    value={textName}
                     placeholder='Nome completo'
                     placeholderTextColor="#ffffff" 
-                    onChangeText={setTextLogin}
+                    onChangeText={setTextName}
                     style={styles.textInput}
                 />
                 <TextInput 
-                    value={textLogin}
+                    value={textEmail}
                     placeholder='Email'
                     placeholderTextColor="#ffffff" 
-                    onChangeText={setTextLogin}
+                    onChangeText={setTextEmail}
                     style={styles.textInput}
                 />
                 <TextInput                     
@@ -45,7 +59,7 @@ const SignupScreen = ({navigation}) => {
                 />
                 
                 <TouchableOpacity                     
-                    onPress={() => {navigation.push('Login')}}
+                    onPress={() => {onPressSignup(textEmail, textPassword, textName)}}
                     style={styles.button}
                 >
                     <Text style={styles.textButton}>Criar</Text>
