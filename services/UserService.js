@@ -1,5 +1,10 @@
 import Database from './firebase';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { 
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword 
+} from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore"; 
 
 const auth = getAuth();
 
@@ -44,17 +49,18 @@ export const recoverPassword = async (email) => {
 
 export const signUp = async (email, password, name) => {
     try {      
-      const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
   
       // Save the user's name in a user collection
       const db = Database;
-      const userRef = db.collection("users").doc(user.uid);
+      const userRef = doc(db, 'users', user.uid);
   
-      await userRef.set({ name });
+      setDoc(userRef, { name: name })
   
       console.log("Signup successful!");
       console.log("User:", user);
+      return user
       // Perform any desired actions after successful signup
     } catch (error) {
       console.error("Signup failed:", error);
