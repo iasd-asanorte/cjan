@@ -1,54 +1,162 @@
-import React, { useEffect, useState } from 'react'
-import { FlatList, StyleSheet, Text, View } from 'react-native'
-import { collection, getDocs } from "firebase/firestore";
-import Database from '../services/firebase';
+import React, { useState } from 'react'
+import { 
+    TouchableOpacity,
+    Text,
+    TextInput,
+    View,
+    StyleSheet,
+    Image,
+    KeyboardAvoidingView,
+    Platform, 
+} from 'react-native'
+import { SimpleLineIcons } from "@expo/vector-icons";
 
-const LoginScreen = () => {
-  const [musicas, setMusicas] = useState([])
+import Logo from '../assets/logo.png'
 
-  useEffect(()=>{
-    const loadMusics = async () => {
-      const query = await getDocs(collection(Database, "profile"));
-      const list = []
-      query.forEach((doc) => {        
-        list.push({...doc.data(), id: doc.id});
-      });
-      setMusicas(list)
-    };
-    loadMusics();
-  }, []);
+const SignupScreen = ({navigation}) => {
+    const [textLogin, setTextLogin] = useState('')
+    const [textPassword, setTextPassword] = useState('')
 
-  return (
-    <>
-      {musicas.length > 0 ? (
-        <FlatList style={styles.lista}
-          data={musicas}
-          renderItem={(musica) => (
-            <View style={styles.item}>
-              <Text style={styles.text}>{musica.item.name}</Text>
+    const onPressLogin = (email, pass) => {
+      console.log(email, pass)
+    }
+
+    return (
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios'? 'padding': 'height'}>
+            <View style={styles.screen}>
+                <Image source={Logo} style={styles.logo} />
+                <Text style={styles.title}>Login</Text>                
+                <TextInput 
+                    value={textLogin}
+                    placeholder='Email'
+                    placeholderTextColor="#ffffff" 
+                    onChangeText={setTextLogin}
+                    style={styles.textInput}
+                />
+                <TextInput                     
+                    placeholder='Senha'
+                    placeholderTextColor="#ffffff"                     
+                    secureTextEntry={true}
+                    onChangeText={setTextPassword}
+                    style={styles.textInput}
+                />
+                <TouchableOpacity onPress={() => {navigation.push('Login')}}>
+                    <Text style={styles.textRecovery}>Recuperar a senha</Text>
+                </TouchableOpacity>
+                <TouchableOpacity                     
+                    onPress={onPressLogin(textLogin, textPassword)}
+                    style={styles.button}
+                >
+                    <Text style={styles.textButton}>Entrar</Text>
+                </TouchableOpacity>
+                <View style={styles.socialLogin}>
+                    <Text style={styles.textLoginWith}>Ou logar com</Text>
+                    <View style={styles.icons}>
+                        <SimpleLineIcons name='social-google' size={30} color={"white"} />
+                        <SimpleLineIcons name='social-facebook' size={30} color={"white"} />
+                        <SimpleLineIcons name='social-twitter' size={30} color={"white"} />                
+                    </View>
+                    <View style={styles.register}>
+                        <Text style={styles.textNosignup}>Não possui cadastro?</Text>
+                        <TouchableOpacity onPress={() => {navigation.push('Signup')}}>
+                            <Text style={styles.textRegister}>Registrar</Text>                    
+                        </TouchableOpacity>
+                    </View>            
+                </View>
             </View>
-          )}
-          keyExtractor={musica => musica.id}        
-        />        
-        
-        ): <Text>Nenhum arquivo encontrado</Text>
-      }
-      
-    </>
-    
-  )
-
+        </KeyboardAvoidingView>
+    )
 }
-export default LoginScreen
+
+export default SignupScreen
 
 const styles = StyleSheet.create({
-  text: {
-    color: '#000000'
-  },
-  item: {
-    backgroundColor: '#ff0000',
-    marginBotton: 5,
-    padding: 10,
-    borderWidth: 5,
-  }
+    screen: {        
+        marginTop: 40,
+        alignItems: 'center',
+        backgroundColor: '#2f2f2f',        
+        padding: 10,
+        height: '100%',
+        justifyContent: 'center'
+        
+    },
+    title: {
+        padding: 20,
+        fontSize: 30,
+        color: '#f2f2f2'
+    },
+    logo:{
+        height: 125,
+        width: 109,
+        marginLeft: 20,
+    },
+    textInput:{                
+        borderRadius: 10,
+        height: 80,
+        width: '100%',
+        padding: 10,
+        borderColor: '#ffffff',
+        borderStyle: 'solid',
+        borderWidth: 1,
+        marginBottom: 15,
+        color: '#ffffff'        
+    },
+    button: {
+        width: '100%',
+        height: 80,
+        backgroundColor: '#5f3ab8',
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',        
+
+    },
+    textButton: {
+        fontSize: 22,
+        color: '#ffffff',
+        fontStyle: 'normal',
+        fontWeight: 700,
+    },
+    socialLogin: {
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    textRecovery: {
+        fontSize: 14,
+        color: '#aeaeae',
+        fontStyle: 'normal',
+        fontWeight: 600,
+        marginBottom: 15,
+        
+    },    
+    textLoginWith: {
+        fontSize: 12,
+        fontStyle: 'normal',
+        fontWeight: 600,
+        color: '#dcdcdc',        
+        marginTop: 15,
+    },
+    icons: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        width: '70%',
+        marginTop: 15,
+    },
+    register: {
+        display: 'flex',
+        flexDirection: 'row',        
+        marginTop: 15,
+    },
+    textNosignup: {
+        fontSize: 14,
+        fontStyle: 'normal',
+        fontWeight: 600,
+        color: '#dbdbdb',
+    },
+    textRegister: {
+        fontSize: 14,
+        fontStyle: 'normal',
+        fontWeight: 600,
+        color: '#288ce9',
+    }
 })
