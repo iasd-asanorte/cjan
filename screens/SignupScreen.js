@@ -43,9 +43,7 @@ const SignupScreen = ({navigation}) => {
                     onChangeText={setTextPassword}
                     style={styles.textInput}
                 />
-                <TouchableOpacity onPress={() => {navigation.push('Login')}}>
-                    <Text style={styles.textRecovery}>Recuperar a senha</Text>
-                </TouchableOpacity>
+                
                 <TouchableOpacity                     
                     onPress={() => {navigation.push('Login')}}
                     style={styles.button}
