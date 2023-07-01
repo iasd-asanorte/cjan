@@ -14,10 +14,10 @@ const Navigation = () => {
     return(
         <NavigationContainer>
             <Root.Navigator screenOptions={{headerShown: false}}>
+                <Root.Screen name="Choice" component={ChoiceScreen} />
                 <Root.Screen name="Start" component={StartScreen} />
                 <Root.Screen name="Login" component={LoginScreen} />
                 <Root.Screen name="Signup" component={SignupScreen} />
-                <Root.Screen name="Choice" component={ChoiceScreen} />
                 <Root.Screen name="Home" component={HomeScreen} />
             </Root.Navigator>
         </NavigationContainer>
