@@ -10,7 +10,7 @@ import {
     Platform, 
 } from 'react-native'
 import { SimpleLineIcons } from "@expo/vector-icons";
-import { login } from "../services/UserService";
+import { login, loginWithGoogle } from "../services/UserService";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Logo from '../assets/logo.png'
@@ -66,7 +66,9 @@ const SignupScreen = ({navigation}) => {
               <View style={styles.socialLogin}>
                   <Text style={styles.textLoginWith}>Ou logar com</Text>
                   <View style={styles.icons}>
-                      <SimpleLineIcons name='social-google' size={30} color={"white"} />
+                        <TouchableOpacity onPress={()=>{loginWithGoogle()}}>
+                            <SimpleLineIcons name='social-google' size={30} color={"white"} />
+                        </TouchableOpacity>        
                       <SimpleLineIcons name='social-facebook' size={30} color={"white"} />
                       <SimpleLineIcons name='social-twitter' size={30} color={"white"} />                
                   </View>

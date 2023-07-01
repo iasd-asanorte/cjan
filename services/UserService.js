@@ -2,7 +2,9 @@ import Database from './firebase';
 import { 
   getAuth,
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword 
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithRedirect
 } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore"; 
 
@@ -68,3 +70,23 @@ export const signUp = async (email, password, name) => {
     }
 };
 
+export const loginWithGoogle = async () => {
+  try {
+    const provider = new GoogleAuthProvider(Database.app);
+    signInWithRedirect(auth, provider);
+    
+    // Sign in with Google popup
+    const result = await getRedirectResult(auth);
+    console.log('estou aqui')    
+
+    // Access the user's information
+    const user = result.user;
+
+    console.log("Login with Google successful!");
+    console.log("User:", user);
+    // Perform any desired actions after successful login
+  } catch (error) {
+    console.error("Login with Google failed:", error);
+    // Handle the error as needed
+  }
+};
