@@ -21,7 +21,7 @@ const SignupScreen = ({navigation}) => {
     const [textValidate, setTextValidate] = useState('')
 
     const onPressLogin = (email, pass) => {      
-      login(email, pass).then((user) => {
+      login(email, pass).then((user) => {        
         console.log(user.uid)
         AsyncStorage.setItem("token", user.uid)
         navigation.navigate('Start')
@@ -31,6 +31,14 @@ const SignupScreen = ({navigation}) => {
         setTextValidate("Login ou senha errados. Tente novamente")
       })     
       
+    }
+
+    const onPressGoogle = () => {
+        loginWithGoogle().then((data) => {
+            console.log(data.user.email)
+            AsyncStorage.setItem("token", data.user.email)
+            navigation.navigate('Start')
+        })
     }
 
     return (
@@ -66,7 +74,7 @@ const SignupScreen = ({navigation}) => {
               <View style={styles.socialLogin}>
                   <Text style={styles.textLoginWith}>Ou logar com</Text>
                   <View style={styles.icons}>
-                        <TouchableOpacity onPress={()=>{loginWithGoogle()}}>
+                        <TouchableOpacity onPress={()=>{onPressGoogle()}}>
                             <SimpleLineIcons name='social-google' size={30} color={"white"} />
                         </TouchableOpacity>        
                       <SimpleLineIcons name='social-facebook' size={30} color={"white"} />
