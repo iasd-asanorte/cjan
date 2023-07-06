@@ -1,6 +1,14 @@
 import React, { useEffect } from 'react'
-import { Text } from 'react-native'
+import { 
+  Text,
+  TouchableOpacity,
+  View,
+  Image,
+  StyleSheet,
+
+} from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Schedule } from '../components/Schedule';
 
 const HomeScreen = ({navigation}) => {
 
@@ -9,7 +17,9 @@ const HomeScreen = ({navigation}) => {
   }, [])
 
   return (
-    <Text>HomeScreen</Text>
+    <View style={styles.screen}>
+      <Schedule />
+    </View>
   )
 }
 
