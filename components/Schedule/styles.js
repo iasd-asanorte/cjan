@@ -1,30 +1,34 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../theme/colors';
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#2f2f2f',
+        backgroundColor: colors.secondaryBg,
         borderRadius: 10,
-        padding: 20,
+        paddingVertical: 5,
+        paddingHorizontal: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
     info: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'center',        
     },
-    data: {
+    data: {        
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'center',        
+        backgroundColor: "#efefef",
+        borderRadius: 10,
+        paddingHorizontal: 10,       
     },
     title: {
         fontSize: 20,
         color: '#ffffff',
-        fontWeight: 'bold',
+        fontWeight: 'bold',        
     },
     subtitle: {
         fontSize: 14,
-        color: '#ffffff',
-        fontWeight: 'bold',
+        color: '#ffffff',        
     },
     local: {
         fontSize: 14,
@@ -33,18 +37,20 @@ const styles = StyleSheet.create({
     },
     weekday: {
         fontSize: 20,
-        color: '#ffffff',
+        color: colors.greyOff,
         fontWeight: 'bold',
+        marginBottom: -10,
     },
     day: {
         fontSize: 40,
-        color: '#ffffff',
-        fontWeight: 'bold',
+        color: colors.greyOff,
+        fontWeight: 'bold',        
     },
     month: {
         fontSize: 20,
-        color: '#ffffff',
+        color: colors.greyOff,
         fontWeight: 'bold',
+        marginBottom: -10,
     },
 });
 
