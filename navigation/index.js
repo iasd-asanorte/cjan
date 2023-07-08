@@ -6,8 +6,9 @@ import LoginScreen from "../screens/LoginScreen"
 import SignupScreen from "../screens/SignupScreen"
 import ChoiceScreen from "../screens/ChoiceScreen"
 import StartScreen from "../screens/StartScreen"
-import HomeScreen from "../screens/HomeScreen"
 import FirstScreen from "../screens/FirstScreen"
+
+import TabNavigation from "./TabNavigation"
 
 const Root = createStackNavigator()
 
@@ -15,12 +16,12 @@ const Navigation = () => {
     return(
         <NavigationContainer>
             <Root.Navigator screenOptions={{headerShown: false}}>
+                <Root.Screen name="Start" component={StartScreen} />
                 <Root.Screen name="First" component={FirstScreen} />
                 <Root.Screen name="Choice" component={ChoiceScreen} />
-                <Root.Screen name="Start" component={StartScreen} />
                 <Root.Screen name="Login" component={LoginScreen} />
                 <Root.Screen name="Signup" component={SignupScreen} />
-                <Root.Screen name="Home" component={HomeScreen} />
+                <Root.Screen name="Main" component={TabNavigation} />
             </Root.Navigator>
         </NavigationContainer>
     )
