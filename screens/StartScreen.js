@@ -10,7 +10,7 @@ const StartScreen = ({navigation}) => {
 
       if(token !== null){
           // validate token
-          navigation.navigate('Home');
+          navigation.navigate('Main');
       }else{
           navigation.navigate('Login');          
       }
