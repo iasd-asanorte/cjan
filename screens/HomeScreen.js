@@ -64,7 +64,19 @@ const HomeScreen = ({navigation}) => {
         )}
         keyExtractor={item => item.id}
         horizontal={true}
-      />      
+      />
+      <Text style={styles.title}>Musicas Favoritas</Text>      
+      <FlatList
+        data={musics}
+        renderItem={({item}) => (
+          <MusicItem 
+            image={item.image} 
+            title={item.title} 
+            artist={item.artist} />
+        )}
+        keyExtractor={item => item.id}
+        horizontal={true}
+      />
     </View>
   );
 }
