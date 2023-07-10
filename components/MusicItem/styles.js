@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
         backgroundColor: colors.secondaryBg,
         borderRadius: 10,
         justifyContent: 'center',
-        marginRight: 5,        
+        marginRight: 5,
+        marginBottom: 5,
     },
     info: {        
         paddingHorizontal: 5,
