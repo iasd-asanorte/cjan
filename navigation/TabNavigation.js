@@ -8,6 +8,7 @@ import {
   } from '@expo/vector-icons';
 
 import HomeScreen from "../screens/HomeScreen"
+import MusicsScreen from "../screens/MusicsScreen"
 
 const Tab = createBottomTabNavigator();
 
@@ -40,7 +41,7 @@ const TabNavigation = () => {
             />
             <Tab.Screen 
                 name="Músicas" 
-                component={HomeScreen} 
+                component={MusicsScreen} 
                 options={{
                     tabBarIcon: ({color}) => (
                         <Ionicons name="ios-musical-notes-outline" size={20} color={color} />
