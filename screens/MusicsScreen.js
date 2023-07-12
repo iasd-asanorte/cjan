@@ -36,7 +36,7 @@ const musics = [
     },
   ]
 
-const MusicsScreen = () => {
+const MusicsScreen = ({navigation}) => {
   return (    
     <View style={styles.container}>
         <View style={styles.header}>
