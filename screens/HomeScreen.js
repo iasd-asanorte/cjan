@@ -5,7 +5,6 @@ import {
   View,
   FlatList,
 } from 'react-native'
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import Schedule from '../components/Schedule';
 import MusicItem from '../components/MusicItem';
 import styles from '../theme/globalStyles';
