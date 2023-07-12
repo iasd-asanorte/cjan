@@ -6,11 +6,16 @@ import {
     Image,
     TouchableOpacity
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const MusicItem = ({image, title, artist}) => {
+  const navigation = useNavigation();  
+  const onPressItem = () => {    
+    navigation.navigate('Player')
+  }
   return (
     
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPressItem}>
         <View style={styles.info}>
             <Image 
                 style={styles.image} 
