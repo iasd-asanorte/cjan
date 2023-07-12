@@ -20,7 +20,5 @@ export default {
     greyOff: '#3e3e3e',
     grey3: '#333',
     violet: '#e990ff',
-    
-
-    
+    neutro: '#6f6f70',    
   };
