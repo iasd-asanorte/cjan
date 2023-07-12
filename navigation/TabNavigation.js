@@ -40,7 +40,7 @@ const TabNavigation = () => {
                 }}
             />
             <Tab.Screen 
-                name="Músicas" 
+                name="Musics" 
                 component={MusicsScreen} 
                 options={{
                     tabBarIcon: ({color}) => (
