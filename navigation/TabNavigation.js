@@ -9,6 +9,7 @@ import {
 
 import HomeScreen from "../screens/HomeScreen"
 import MusicsScreen from "../screens/MusicsScreen"
+import ProfileScreen from "../screens/ProfileScreen"
 
 const Tab = createBottomTabNavigator();
 
@@ -59,7 +60,7 @@ const TabNavigation = () => {
             />
             <Tab.Screen 
                 name="Perfil" 
-                component={HomeScreen} 
+                component={ProfileScreen} 
                 options={{
                     tabBarIcon: ({color}) => (
                         <Feather name="user" size={20} color={color} />
