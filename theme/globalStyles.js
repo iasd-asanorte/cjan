@@ -23,17 +23,22 @@ const styles = StyleSheet.create({
         color: colors.white,
         fontWeight: 'bold',
         marginVertical: 3,
-    },
-    subtitle: {
-        fontSize: 15,
-        color: colors.white,
-        fontWeight: 'bold',
-    },
+    },    
     textExtraLarge: {
         fontSize: 40,
         color: colors.white,
         fontWeight: 'bold',
         marginVertical: 10,
+    },
+    text: {
+        fontSize: 15,
+        color: colors.white,
+        fontWeight: 'bold',        
+    },
+    subtitle: {
+        fontSize: 8,
+        color: colors.neutro,
+        fontWeight: 'bold',
     },
     status:{
         fontSize: 12,
