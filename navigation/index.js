@@ -8,6 +8,7 @@ import ChoiceScreen from "../screens/ChoiceScreen"
 import StartScreen from "../screens/StartScreen"
 import FirstScreen from "../screens/FirstScreen"
 import PlayerScreen from "../screens/PlayerScreen"
+import EditProfileScreen from "../screens/EditProfileScreen"
 
 import TabNavigation from "./TabNavigation"
 
@@ -22,8 +23,9 @@ const Navigation = () => {
                 <Root.Screen name="Choice" component={ChoiceScreen} />
                 <Root.Screen name="Login" component={LoginScreen} />
                 <Root.Screen name="Signup" component={SignupScreen} />
-                <Root.Screen name="Main" component={TabNavigation} />
                 <Root.Screen name="Player" component={PlayerScreen} />
+                <Root.Screen name="EditProfile" component={EditProfileScreen} />
+                <Root.Screen name="Main" component={TabNavigation} />
             </Root.Navigator>
         </NavigationContainer>
     )
