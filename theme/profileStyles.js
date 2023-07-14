@@ -9,6 +9,13 @@ const sytles = StyleSheet.create({
         borderColor: colors.secondaryBg,
         borderWidth: 10,
     },
+    smallImage: {
+        width: 100,
+        height: 100,
+        borderRadius: 50,        
+        borderColor: colors.secondaryBg,
+        borderWidth: 5,
+    },
     naipe: {
         backgroundColor: colors.white,
         color: colors.secondaryBg,
