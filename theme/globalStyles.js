@@ -64,11 +64,46 @@ const styles = StyleSheet.create({
         justifyContent: 'center',        
 
     },
+    smallButton: {
+        width: '70%',
+        height: 30,
+        backgroundColor: '#5f3ab8',
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 10,        
+
+    },
     textButton: {
         fontSize: 22,
         color: '#ffffff',
         fontStyle: 'normal',
         fontWeight: 700,
+    },    
+    modalView: {
+        margin: 20,
+        backgroundColor: colors.secondaryBg,
+        borderRadius: 20,
+        padding: 10,
+        alignItems: "center",        
+        height: '25%',
+        width: '50%',
+
+        marginTop: 'auto',
+        marginBottom: 'auto',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+
+        shadowOpacity: 0.2,
+        elevation: 5,
+        
+        
     },
 });
 

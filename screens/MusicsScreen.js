@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import {
     Text,
     View,
-    StyleSheet,
     FlatList,
+    Modal,
+    TouchableOpacity,
+    Button,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import styles from '../theme/globalStyles';
@@ -37,11 +39,35 @@ const musics = [
   ]
 
 const MusicsScreen = ({navigation}) => {
+    const [modalVisible, setModalVisible] = useState(false);
   return (    
-    <View style={styles.container}>
+    <View style={styles.container}>                
+        <Modal           
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+                console.log("Modal has been closed.");            
+            }}
+            >
+            <View style={styles.modalView}>
+                <Text style={styles.text}>Organizar</Text>
+                <View style={{width: '100%', flex:1, justifyContent: 'space-around'}}>
+                    <Text style={styles.text}>Recentes</Text>
+                    <Text style={styles.text}>Ordem aleatória</Text>                    
+                </View>
+                <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.smallButton}>
+                    <Text style={styles.text}>OK</Text>
+                </TouchableOpacity>
+            </View>
+        </Modal>      
+            
+
         <View style={styles.header}>
             <Text style={styles.title}>Musicas</Text>
-            <Ionicons name="settings-outline" size={24} color="white" />
+            <TouchableOpacity onPress={() => setModalVisible(true)}>
+              <Ionicons name="settings-outline" size={24} color="white" />
+            </TouchableOpacity>
         </View>
         <View style={{alignItems: 'center'}}>
             <FlatList
