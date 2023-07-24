@@ -6,10 +6,12 @@ import {
     Modal,
     TouchableOpacity,
     Button,
+    Switch,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import styles from '../theme/globalStyles';
 import MusicItem from '../components/MusicItem';
+import RadioButton from '../components/RadioButton';
 
 const musics = [
     {
@@ -53,8 +55,8 @@ const MusicsScreen = ({navigation}) => {
             <View style={styles.modalView}>
                 <Text style={styles.text}>Organizar</Text>
                 <View style={{width: '100%', flex:1, justifyContent: 'space-around'}}>
-                    <Text style={styles.text}>Recentes</Text>
-                    <Text style={styles.text}>Ordem aleatória</Text>                    
+                    <RadioButton name="filter" selected={true} value="Recentes" />
+                    <RadioButton name="filter" selected={false} value="Ordem Aleatória" />
                 </View>
                 <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.smallButton}>
                     <Text style={styles.text}>OK</Text>
