@@ -11,7 +11,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import styles from '../theme/globalStyles';
 import MusicItem from '../components/MusicItem';
-import RadioButton from '../components/RadioButton';
+import RadioGroup from '../components/RadioGroup';
 
 const musics = [
     {
@@ -40,6 +40,11 @@ const musics = [
     },
   ]
 
+const OrderingOptions = [
+    { value: 'Recente', selected: true },
+    { value: 'Aleatório', selected: false },    
+];
+
 const MusicsScreen = ({navigation}) => {
     const [modalVisible, setModalVisible] = useState(false);
   return (    
@@ -55,8 +60,7 @@ const MusicsScreen = ({navigation}) => {
             <View style={styles.modalView}>
                 <Text style={styles.text}>Organizar</Text>
                 <View style={{width: '100%', flex:1, justifyContent: 'space-around'}}>
-                    <RadioButton name="filter" selected={true} value="Recentes" />
-                    <RadioButton name="filter" selected={false} value="Ordem Aleatória" />
+                    <RadioGroup data={OrderingOptions} />
                 </View>
                 <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.smallButton}>
                     <Text style={styles.text}>OK</Text>
