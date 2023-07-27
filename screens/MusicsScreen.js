@@ -41,12 +41,15 @@ const musics = [
   ]
 
 const OrderingOptions = [
-    { value: 'Recente', selected: true },
-    { value: 'Aleatório', selected: false },    
+    { id: 1, value: 'Recente'},
+    { id: 2, value: 'Ordem Alfabética'},
+    { id: 3, value: 'Favoritos'},
 ];
 
 const MusicsScreen = ({navigation}) => {
     const [modalVisible, setModalVisible] = useState(false);
+    const [option, setOption] = useState(null);
+    console.log(option);
   return (    
     <View style={styles.container}>                
         <Modal           
@@ -60,7 +63,7 @@ const MusicsScreen = ({navigation}) => {
             <View style={styles.modalView}>
                 <Text style={styles.text}>Organizar</Text>
                 <View style={{width: '100%', flex:1, justifyContent: 'space-around'}}>
-                    <RadioGroup data={OrderingOptions} />
+                    <RadioGroup data={OrderingOptions} onSelect={(value) => setOption(value)}/>
                 </View>
                 <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.smallButton}>
                     <Text style={styles.text}>OK</Text>
